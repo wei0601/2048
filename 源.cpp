@@ -6,6 +6,7 @@ using namespace std;
 int const ROW = 4;
 int const COL = 4;
 int game[ROW][COL] = { 0 };
+int score = 0;
 
 //上下左右
 int const UP = 1;
@@ -37,7 +38,7 @@ enum GameNum
 void Print()
 {
 	system("cls");
-	cout << "                   2048 控 制 台 版                  " << endl;
+	cout << "                    2048 控 制 台 版                    " << endl;
 	for (int i = 0; i < ROW; ++i)
 	{
 		cout << "---------------------------------" << endl;
@@ -112,16 +113,71 @@ void Process(int direction)
 					{
 						game[crow - 1][col] = game[crow][col];
 						game[crow][col] = 0;
+						score = score;
 					}
 					else
 					{
 						//合并
-						if (game[crow - 1][col] == game[crow][col])
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_2)
 						{
 							game[crow - 1][col] *= 2;
 							game[crow][col] = 0;
+							score = score + 2;
 						}
-
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_4)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 4;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_8)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 8;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_16)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 16;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_32)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 32;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_64)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 64;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_128)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 128;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_256)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 256;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_512)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 512;
+						}
+						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_1024)
+						{
+							game[crow - 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 1024;
+						}
 					}
 				}
 			}
@@ -144,10 +200,65 @@ void Process(int direction)
 					else
 					{
 						//合并
-						if (game[crow + 1][col] == game[crow][col])
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_2)
 						{
 							game[crow + 1][col] *= 2;
 							game[crow][col] = 0;
+							score = score + 2;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_4)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 4;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_8)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 8;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_16)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 16;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_32)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 32;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_64)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 64;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_128)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 128;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_256)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 256;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_512)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 512;
+						}
+						if (game[crow + 1][col] == game[crow][col] && game[crow][col] == Game_1024)
+						{
+							game[crow + 1][col] *= 2;
+							game[crow][col] = 0;
+							score = score + 1024;
 						}
 
 					}
@@ -172,12 +283,66 @@ void Process(int direction)
 					else
 					{
 						//合并
-						if (game[row][ccol - 1] == game[row][ccol])
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_2)
 						{
 							game[row][ccol - 1] *= 2;
 							game[row][ccol] = 0;
+							score = score + 2;
 						}
-
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_4)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 4;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_8)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 8;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_16)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 16;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_32)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 32;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_64)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 64;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_128)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 128;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_256)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 256;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_512)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 512;
+						}
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_1024)
+						{
+							game[row][ccol - 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 1024;
+						}
 					}
 				}
 			}
@@ -200,12 +365,66 @@ void Process(int direction)
 					else
 					{
 						//合并
-						if (game[row][ccol + 1] == game[row][ccol])
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_2)
 						{
 							game[row][ccol + 1] *= 2;
 							game[row][ccol] = 0;
+							score = score + 2;
 						}
-
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_4)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 4;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_8)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 8;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_16)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 16;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_32)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 32;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_64)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 64;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_128)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 128;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_256)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 256;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_512)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 512;
+						}
+						if (game[row][ccol + 1] == game[row][ccol] && game[row][ccol] == Game_1024)
+						{
+							game[row][ccol + 1] *= 2;
+							game[row][ccol] = 0;
+							score = score + 1024;
+						}
 					}
 				}
 			}
@@ -226,10 +445,10 @@ int Input()
 	int direction = 0;
 	while (true)
 	{
-		upArrow = GetAsyncKeyState(VK_UP);
-		downArrow = GetAsyncKeyState(VK_DOWN);
-		leftArrow = GetAsyncKeyState(VK_LEFT);
-		rightArrow = GetAsyncKeyState(VK_RIGHT);
+		upArrow = GetAsyncKeyState(VK_UP);//链接到上箭头
+		downArrow = GetAsyncKeyState(VK_DOWN);//下箭头
+		leftArrow = GetAsyncKeyState(VK_LEFT);//左箭头
+		rightArrow = GetAsyncKeyState(VK_RIGHT);//右箭头
 
 		if (upArrow)
 		{
@@ -252,7 +471,7 @@ int Input()
 			break;
 		}
 
-		Sleep(100);
+		Sleep(100);//暂停100ms
 	}
 
 	return direction;
@@ -261,6 +480,7 @@ int Input()
 //判断游戏状态
 int Judge()
 {
+
 	//赢得游戏
 	for (int i = 0; i < ROW; ++i)
 	{
@@ -315,25 +535,28 @@ int main()
 	int gameState = -1;
 	while (true)
 	{
-		direction = Input();
-
 		gameState = Judge();
+		direction = Input();
 		if (direction && gameState == GAME_CONTINUE)
 		{
 			Process(direction);
 			CreateNumber();
+			Sleep(100);//暂停
 			Print();
-			Sleep(100);
+			cout << "score: " << score << endl;
+			Sleep(1000);
 		}
 		else if (gameState == GAME_WIN)
 		{
 			Print();
+			cout << "score: " << score << endl;
 			cout << "You Win！" << endl;
 			break;
 		}
 		else if (gameState == GAME_OVER)
 		{
 			Print();
+			cout << "score: " << score << endl;
 			cout << "You lose!" << endl;
 			break;
 		}

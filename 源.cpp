@@ -1,12 +1,14 @@
 #include <iostream>
 #include <windows.h>
-#include <ctime>
+#include<easyx.h>
+#include <ctime>//访问时间和日期的函数结构
+#include<mmsystem.h>
+#pragma comment(lib,"winmm.lib")
 using namespace std;
 
 int const ROW = 4;
 int const COL = 4;
 int game[ROW][COL] = { 0 };
-int score = 0;
 
 //上下左右
 int const UP = 1;
@@ -18,7 +20,7 @@ int const RIGHT = 4;
 int const GAME_OVER = 1;
 int const GAME_WIN = 2;
 int const GAME_CONTINUE = 3;
-
+int score = 0;
 enum GameNum
 {
 	Game_2 = 2,
@@ -32,16 +34,23 @@ enum GameNum
 	Game_512 = 512,
 	Game_1024 = 1024,
 	Game_2048 = 2048,
-};
+};//枚举类型
 
 //打印所得的数组
 void Print()
 {
-	system("cls");
-	cout << "                    2048 控 制 台 版                    " << endl;
+	system("cls");//system("CLS")可以实现清屏操作
+	
+	mciSendString("open 好运来.mp3", 0, 0, 0);
+	mciSendString("play 好运来.mp3", 0, 0, 0);
+	system("color 4F"); //改变控制台的前景色和背景阿拉伯数字为背景色
+	cout <<"                   2048 小游戏                         " << endl;
+	cout << "                    FIGHTINGS！                       " << endl;
+	cout << "                       by wei" << endl<<endl;
+	//绘制整体界面
 	for (int i = 0; i < ROW; ++i)
 	{
-		cout << "---------------------------------" << endl;
+		cout << "_________________________________" << endl;
 		for (int j = 0; j < COL; ++j)
 		{
 			if (game[i][j] == 0)
@@ -50,12 +59,12 @@ void Print()
 			}
 			else
 			{
-				cout << "|   " << game[i][j] << "\t";
+				cout << "| " << game[i][j] << "\t";
 			}
 		}
 		cout << "|" << endl;
 	}
-	cout << "---------------------------------" << endl;
+	cout << "_________________________________" << endl;
 }
 
 
@@ -65,12 +74,13 @@ bool CreateNumber()
 	int y = -1;
 	int times = 0;
 	int maxTimes = ROW * COL;
-	//三分之二的概率生成2，三分之一的概率生成4
-	int whitch = rand() % 3;
+	//找空格1/2的概率生成2，5/16的概率生成4，1/8生成8,1/16生成16
+	int whitch = rand() % 16;//0-2随机数
 	do
 	{
 		x = rand() % ROW;
 		y = rand() % COL;
+		//生成0-ROW(COL)-1随机数
 		++times;
 	} while (game[x][y] != 0 && times <= maxTimes);
 
@@ -84,6 +94,14 @@ bool CreateNumber()
 		GameNum num;
 		if (whitch == 0)
 		{
+			num = Game_16;
+		}
+		else if (whitch==1|| whitch==2)
+		{
+			num = Game_8;
+		}
+		else if(whitch>=3&& whitch<=7)
+		{
 			num = Game_4;
 		}
 		else if (whitch)
@@ -95,6 +113,7 @@ bool CreateNumber()
 
 	return true;
 }
+
 
 void Process(int direction)
 {
@@ -118,7 +137,7 @@ void Process(int direction)
 					else
 					{
 						//合并
-						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_2)
+						if (game[crow - 1][col] == game[crow][col]&& game[crow][col]==Game_2)
 						{
 							game[crow - 1][col] *= 2;
 							game[crow][col] = 0;
@@ -148,7 +167,7 @@ void Process(int direction)
 							game[crow][col] = 0;
 							score = score + 32;
 						}
-						if (game[crow - 1][col] == game[crow][col] && game[crow][col] == Game_64)
+						if (game[crow - 1][col] == game[crow][col] &&game[crow][col]== Game_64)
 						{
 							game[crow - 1][col] *= 2;
 							game[crow][col] = 0;
@@ -283,7 +302,7 @@ void Process(int direction)
 					else
 					{
 						//合并
-						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol] == Game_2)
+						if (game[row][ccol - 1] == game[row][ccol] && game[row][ccol]== Game_2)
 						{
 							game[row][ccol - 1] *= 2;
 							game[row][ccol] = 0;
@@ -480,7 +499,7 @@ int Input()
 //判断游戏状态
 int Judge()
 {
-
+	
 	//赢得游戏
 	for (int i = 0; i < ROW; ++i)
 	{

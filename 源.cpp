@@ -42,7 +42,7 @@ void Print()
 	system("cls");//system("CLS")可以实现清屏操作
 	
 	mciSendString("open 好运来.mp3", 0, 0, 0);
-	mciSendString("play 好运来.mp3", 0, 0, 0);
+	mciSendString("play 好运来.mp3 repeat", 0, 0, 0);
 	system("color 4F"); //改变控制台的前景色和背景阿拉伯数字为背景色
 	cout <<"                   2048 小游戏                         " << endl;
 	cout << "                    FIGHTINGS！                       " << endl;
